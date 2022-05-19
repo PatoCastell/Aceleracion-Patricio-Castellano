@@ -1,5 +1,6 @@
 package com.alkemy.disney.services.implem;
 
+import com.alkemy.disney.dtos.PeliculaBasicDTO;
 import com.alkemy.disney.dtos.PeliculaDto;
 import com.alkemy.disney.entities.PeliculaEntity;
 import com.alkemy.disney.mapper.PeliculaMapper;
@@ -7,6 +8,8 @@ import com.alkemy.disney.repositories.PeliculaRepository;
 import com.alkemy.disney.services.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class PeliculaImplem implements PeliculaService {
@@ -24,5 +27,12 @@ public class PeliculaImplem implements PeliculaService {
 
     public void delete(Long id) {
         peliculaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<PeliculaBasicDTO> findAll() {
+        List<PeliculaEntity> entities = peliculaRepository.findAll();
+        List<PeliculaBasicDTO> dtos = peliculaMapper.peliculaEntityList2BasicDTOList(entities);
+        return dtos;
     }
 }

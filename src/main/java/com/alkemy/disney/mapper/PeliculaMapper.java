@@ -1,5 +1,6 @@
 package com.alkemy.disney.mapper;
 
+import com.alkemy.disney.dtos.PeliculaBasicDTO;
 import com.alkemy.disney.dtos.PeliculaDto;
 import com.alkemy.disney.entities.PeliculaEntity;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,5 +52,22 @@ public class PeliculaMapper {
             dtos.add(this.peliculaEntity2DTO(entity, load));
         }
         return dtos;
+    }
+
+    public List<PeliculaBasicDTO> peliculaEntityList2BasicDTOList(List<PeliculaEntity> entities) {
+        List<PeliculaBasicDTO> dtos = new ArrayList<>();
+        for(PeliculaEntity entity: entities){
+            dtos.add(peliculaEntity2DTOBasic(entity));
+        }
+        return dtos;
+    }
+
+    private PeliculaBasicDTO peliculaEntity2DTOBasic(PeliculaEntity entity) {
+        PeliculaBasicDTO dto = new PeliculaBasicDTO();
+        dto.setId(entity.getId());
+        dto.setFechaCreacion(entity.getFechaCreacion());
+        dto.setImagen(entity.getImagen());
+        dto.setTitulo(entity.getTitulo());
+        return dto;
     }
 }

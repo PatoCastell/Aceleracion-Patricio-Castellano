@@ -1,5 +1,6 @@
 package com.alkemy.disney.controllers;
 
+import com.alkemy.disney.dtos.PeliculaBasicDTO;
 import com.alkemy.disney.dtos.PeliculaDto;
 import com.alkemy.disney.entities.PeliculaEntity;
 import com.alkemy.disney.services.PeliculaService;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("movies")
@@ -26,5 +28,11 @@ public class PeliculaController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         peliculaService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PeliculaBasicDTO>> findAll(){
+        List<PeliculaBasicDTO> dtos = peliculaService.findAll();
+        return ResponseEntity.ok().body(dtos);
     }
 }
