@@ -21,10 +21,4 @@ public class GeneroController {
          return ResponseEntity.status(HttpStatus.CREATED).body(generoGuardado);
     }
 
-    @GetMapping
-    public ResponseEntity<List<GeneroDto>> getAll(){
-        List<GeneroDto> generos = generoService.getAll();
-        return ResponseEntity.ok().body(generos);
-
-    }
 }

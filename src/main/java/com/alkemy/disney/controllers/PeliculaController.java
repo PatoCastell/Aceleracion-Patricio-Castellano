@@ -6,15 +6,12 @@ import com.alkemy.disney.services.PeliculaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("peliculas")
+@RequestMapping("movies")
 public class PeliculaController {
     @Autowired
     private PeliculaService peliculaService;
@@ -23,5 +20,11 @@ public class PeliculaController {
     public ResponseEntity<PeliculaDto> save (@Valid @RequestBody PeliculaDto dto){
         PeliculaDto peliculaGuardada = peliculaService.save(dto);
         return ResponseEntity.status(HttpStatus.CREATED).body(peliculaGuardada);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        peliculaService.delete(id);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }
