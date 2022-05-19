@@ -32,4 +32,9 @@ public class GeneroImplem implements GeneroService {
         List<GeneroDto> dtos = generoMapper.generoEntityList2DTOList(entities);
         return dtos;
     }
+
+
+    public void delete(Long id) {
+        this.generoRepository.deleteById(id);
+    }
 }

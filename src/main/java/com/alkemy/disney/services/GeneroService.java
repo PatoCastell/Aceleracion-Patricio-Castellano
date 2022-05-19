@@ -9,4 +9,6 @@ public interface GeneroService {
     GeneroDto save(GeneroDto dto);
 
     List<GeneroDto> getAll();
+
+    void delete(Long id);
 }

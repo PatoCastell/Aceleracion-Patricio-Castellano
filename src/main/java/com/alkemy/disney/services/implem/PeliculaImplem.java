@@ -18,7 +18,11 @@ public class PeliculaImplem implements PeliculaService {
     public PeliculaDto save(PeliculaDto dto) {
         PeliculaEntity entity = peliculaMapper.peliculaDTO2Entity(dto);
         PeliculaEntity peliculaSaved = peliculaRepository.save(entity);
-        PeliculaDto result = peliculaMapper.peliculaEntity2DTO(peliculaSaved);
+        PeliculaDto result = peliculaMapper.peliculaEntity2DTO(peliculaSaved, true);
         return result;
+    }
+
+    public void delete(Long id) {
+        peliculaRepository.deleteById(id);
     }
 }
