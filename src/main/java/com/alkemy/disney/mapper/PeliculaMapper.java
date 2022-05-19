@@ -31,7 +31,7 @@ public class PeliculaMapper {
         return entities;
     }
 
-    public PeliculaDto peliculaEntity2DTO(PeliculaEntity entity) {
+    public PeliculaDto peliculaEntity2DTO(PeliculaEntity entity, boolean loadCharacter) {
         PeliculaDto dto = new PeliculaDto();
         dto.setId(entity.getId());
         dto.setImagen(entity.getImagen());
@@ -39,7 +39,17 @@ public class PeliculaMapper {
         dto.setFechaCreacion(entity.getFechaCreacion());
         dto.setTitulo(entity.getTitulo());
         dto.setGeneroId(entity.getGeneroId());
-        dto.setPersonajes(personajeMapper.personajeEntitySet2DTOSet(entity.getPersonajes()));
+        if(loadCharacter) {
+            dto.setPersonajes(personajeMapper.personajeEntitySet2DTOSet(entity.getPersonajes(), false));
+        }
         return dto;
+    }
+
+    public List<PeliculaDto> peliculaEntityList2DTOList(List<PeliculaEntity> peliculas, boolean load) {
+        List<PeliculaDto> dtos = new ArrayList<>();
+        for(PeliculaEntity entity: peliculas){
+            dtos.add(this.peliculaEntity2DTO(entity, load));
+        }
+        return dtos;
     }
 }
