@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Set;
 
 @RestController
 @RequestMapping("characters")
@@ -23,6 +24,7 @@ public class PersonajeController {
         return ResponseEntity.status(HttpStatus.CREATED).body(dtoSaved);
     }
 
+    @RequestMapping("/getAll")
     @GetMapping
     public ResponseEntity<List<PersonajeBasicDTO>> findAll(){
         List<PersonajeBasicDTO> personajes = personajeService.findAll();
@@ -33,5 +35,15 @@ public class PersonajeController {
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         personajeService.delete(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping
+    public ResponseEntity<List<PersonajeDto>> getDetailsByFilters(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Integer age,
+            @RequestParam(required = false) Set<Long> idMovies
+            ){
+        List<PersonajeDto> personajes = personajeService.getByFilters(name, age, idMovies);
+        return ResponseEntity.ok(personajes);
     }
 }

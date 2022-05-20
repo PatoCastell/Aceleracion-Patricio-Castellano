@@ -4,6 +4,7 @@ import com.alkemy.disney.dtos.PersonajeBasicDTO;
 import com.alkemy.disney.dtos.PersonajeDto;
 
 import java.util.List;
+import java.util.Set;
 
 public interface PersonajeService {
 
@@ -12,4 +13,6 @@ public interface PersonajeService {
     List<PersonajeBasicDTO> findAll();
 
     void delete(Long id);
+
+    List<PersonajeDto> getByFilters(String name, Integer age, Set<Long> idMovies);
 }

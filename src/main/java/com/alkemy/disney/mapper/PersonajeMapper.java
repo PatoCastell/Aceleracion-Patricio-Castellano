@@ -76,4 +76,12 @@ public class PersonajeMapper {
         dto.setImagen(entity.getImagen());
         return dto;
     }
+
+    public List<PersonajeDto> personajeEntityList2DTOList(List<PersonajeEntity> entities, boolean b) {
+        List<PersonajeDto> dtos = new ArrayList<>();
+        for (PersonajeEntity entity : entities){
+            dtos.add(personajeEntity2DTO(entity, b));
+        }
+        return dtos;
+    }
 }

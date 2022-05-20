@@ -32,6 +32,7 @@ public class PeliculaController {
 
     @GetMapping
     public ResponseEntity<List<PeliculaBasicDTO>> findAll(){
+        int num = 1;
         List<PeliculaBasicDTO> dtos = peliculaService.findAll();
         return ResponseEntity.ok().body(dtos);
     }

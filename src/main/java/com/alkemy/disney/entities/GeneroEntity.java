@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Table(name = "generos")
 @Getter
 @Setter
-@SQLDelete(sql= "UPDATE genero set deleted=true WHERE id=?")
+@SQLDelete(sql= "UPDATE generos set deleted=true WHERE id=?")
 @Where(clause="deleted=false")
 public class GeneroEntity {
     @Id
