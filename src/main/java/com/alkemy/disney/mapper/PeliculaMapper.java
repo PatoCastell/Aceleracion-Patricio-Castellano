@@ -70,4 +70,22 @@ public class PeliculaMapper {
         dto.setTitulo(entity.getTitulo());
         return dto;
     }
+
+    public void actualizarPelicula(PeliculaDto dto, PeliculaEntity entity) {
+        if (dto.getCalificacion()>0 && dto.getCalificacion() <6){
+            entity.setCalificacion(dto.getCalificacion());
+        }
+        if (dto.getImagen()!=null && !dto.getImagen().isBlank()){
+            entity.setImagen(dto.getImagen());
+        }
+        if (dto.getTitulo()!=null && !dto.getTitulo().isBlank()){
+            entity.setTitulo(dto.getTitulo());
+        }
+        if (dto.getGeneroId()!=null && dto.getGeneroId()!=0){
+            entity.setGeneroId(dto.getGeneroId());
+        }
+        if (dto.getFechaCreacion()!=null){
+            entity.setFechaCreacion(dto.getFechaCreacion());
+        }
+    }
 }

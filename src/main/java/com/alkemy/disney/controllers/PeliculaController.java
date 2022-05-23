@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,10 +31,40 @@ public class PeliculaController {
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public ResponseEntity<List<PeliculaBasicDTO>> findAll(){
         int num = 1;
         List<PeliculaBasicDTO> dtos = peliculaService.findAll();
         return ResponseEntity.ok().body(dtos);
     }
+
+    @GetMapping
+    public ResponseEntity<List<PeliculaDto>> getDetailsByFilters(
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Long idGenero,
+            @RequestParam(required = false, defaultValue = "ASC") String order
+            ){
+        List<PeliculaDto> peliculasFiltradas = peliculaService.getByFilters(name, idGenero, order);
+        return ResponseEntity.ok(peliculasFiltradas);
+
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PeliculaDto> update(@RequestBody PeliculaDto dto, @PathVariable Long id){
+        PeliculaDto updated = peliculaService.update(id, dto);
+        return ResponseEntity.ok().body(updated);
+    }
+
+    @PostMapping("/{id}/characters/{idPersonaje}")
+    public ResponseEntity<PeliculaDto> addPersonaje(@PathVariable Long id, @PathVariable Long idPersonaje){
+        peliculaService.savePersonaje(id, idPersonaje);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @DeleteMapping("/{id}/characters/{idPersonaje}")
+    public ResponseEntity<PeliculaDto> removePersonaje(@PathVariable Long id, @PathVariable Long idPersonaje){
+        peliculaService.removePersonaje(id, idPersonaje);
+        return  ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
 }

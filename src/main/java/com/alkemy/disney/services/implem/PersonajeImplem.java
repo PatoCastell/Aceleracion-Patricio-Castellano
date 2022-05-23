@@ -46,4 +46,14 @@ public class PersonajeImplem implements PersonajeService {
         List<PersonajeDto> dtos = this.personajeMapper.personajeEntityList2DTOList(entities, true);
         return dtos;
     }
+
+    public PersonajeDto update(Long id, PersonajeDto dto) {
+        PersonajeEntity entity = personajeRepository.findById(id).orElse(null);
+        //TODO Exception param incorrecto aca
+
+        personajeMapper.actualizarPersonaje(dto, entity);
+        PersonajeEntity entitySaved = personajeRepository.save(entity);
+        PersonajeDto result = personajeMapper.personajeEntity2DTO(entitySaved, true);
+        return result;
+    }
 }

@@ -84,4 +84,22 @@ public class PersonajeMapper {
         }
         return dtos;
     }
+
+    public void actualizarPersonaje(PersonajeDto dto, PersonajeEntity entity) {
+        if(dto.getEdad()>0){
+            entity.setEdad(dto.getEdad());
+        }
+        if (dto.getHistoria()!=null && !dto.getHistoria().isEmpty()){
+            entity.setHistoria(dto.getHistoria());
+        }
+        if(dto.getImagen()!=null && !dto.getImagen().isEmpty()){
+            entity.setImagen(dto.getImagen());
+        }
+        if(dto.getNombre()!=null && !dto.getNombre().isEmpty()){
+            entity.setNombre(dto.getNombre());
+        }
+        if (dto.getPeso()>0){
+            entity.setPeso(dto.getPeso());
+        }
+    }
 }

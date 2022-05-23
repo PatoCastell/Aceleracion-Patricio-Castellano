@@ -46,4 +46,10 @@ public class PersonajeController {
         List<PersonajeDto> personajes = personajeService.getByFilters(name, age, idMovies);
         return ResponseEntity.ok(personajes);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PersonajeDto> update(@PathVariable Long id, @RequestBody PersonajeDto dto){
+        PersonajeDto dtoUpdate = personajeService.update(id, dto);
+        return  ResponseEntity.ok().body(dtoUpdate);
+    }
 }
