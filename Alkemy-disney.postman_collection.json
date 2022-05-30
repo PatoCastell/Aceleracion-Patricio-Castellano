@@ -6,44 +6,82 @@
 	},
 	"item": [
 		{
-			"name": "generos",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"nombsre\":\"Terror\",\r\n    \"imagsen\":\"terror.jpg\"\r\n    \r\n}",
-					"options": {
-						"raw": {
-							"language": "json"
+			"name": "auth",
+			"item": [
+				{
+					"name": "singUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\": \"patriciocastellano7@gmail.com\",\r\n   \"password\": \"password1\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/singup",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"singup"
+							]
 						}
-					}
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/generos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"generos"
-					]
+				{
+					"name": "singIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"username\": \"patriciocastellano@gmail.com\",\r\n   \"password\": \"password1\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/auth/singin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"auth",
+								"singin"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		},
 		{
 			"name": "generos",
-			"protocolProfileBehavior": {
-				"disableBodyPruning": true
-			},
 			"request": {
-				"method": "GET",
-				"header": [],
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "",
+					"raw": "{\r\n    \"nombsre\":\"Accion\",\r\n    \"imagsen\":\"accion.jpg\"\r\n    \r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -99,7 +137,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \r\n    \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Pato\",\r\n     \"edad\": 23,\r\n     \"peso\": 155,\r\n     \"historia\": \"blablabla\"\r\n}",
@@ -110,7 +154,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/characters/getAll",
+					"raw": "http://localhost:8080/characters/getAll?Authorization=Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -119,6 +163,12 @@
 					"path": [
 						"characters",
 						"getAll"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE"
+						}
 					]
 				}
 			},
@@ -131,7 +181,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \r\n    \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Pato\",\r\n     \"edad\": 23,\r\n     \"peso\": 155,\r\n     \"historia\": \"blablabla\"\r\n}",
@@ -142,7 +198,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/characters",
+					"raw": "http://localhost:8080/characters?name=Patricio",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -154,8 +210,7 @@
 					"query": [
 						{
 							"key": "name",
-							"value": "Pato",
-							"disabled": true
+							"value": "Patricio"
 						},
 						{
 							"key": "age",
@@ -176,7 +231,13 @@
 			"name": "personajes/id",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\":\"Patricio\",\r\n    \"imagen\":\"josj.jpg\"\r\n    \r\n}",
@@ -187,7 +248,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/characters/10",
+					"raw": "http://localhost:8080/characters/34",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -195,7 +256,7 @@
 					"port": "8080",
 					"path": [
 						"characters",
-						"10"
+						"34"
 					]
 				}
 			},
@@ -205,7 +266,13 @@
 			"name": "personajes/id",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{  \r\n    \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Patricio\",\r\n     \"edad\": 23,\r\n     \"peso\": 70,\r\n     \"historia\": \"blebleble\"\r\n}\r\n",
@@ -234,7 +301,13 @@
 			"name": "peliculas",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \r\n    \"titulo\":\"Rata que cocina\",\r\n    \"imagen\":\"ratas.jpg\",\r\n    \"fechaCreacion\": \"2006-02-20\",\r\n    \"calificacion\": 5,\r\n    \"generoId\": 1,\r\n    \"personajes\":[{\r\n        \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Cocinero\",\r\n     \"edad\": 48,\r\n     \"peso\": 65,\r\n     \"historia\": \"wiwi\"},\r\n     {\r\n         \"imagen\": \"imaasf.jpg\",\r\n     \"nombre\": \"raton\",\r\n     \"edad\": 5,\r\n     \"peso\": 14,\r\n     \"historia\": \"ruido de rata\"\r\n     }\r\n    ]\r\n}",
@@ -265,7 +338,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \r\n    \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Pato\",\r\n     \"edad\": 23,\r\n     \"peso\": 155,\r\n     \"historia\": \"blablabla\"\r\n}",
@@ -297,7 +376,13 @@
 			},
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n   \r\n    \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Pato\",\r\n     \"edad\": 23,\r\n     \"peso\": 155,\r\n     \"historia\": \"blablabla\"\r\n}",
@@ -342,7 +427,13 @@
 			"name": "peliculas/id",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\":\"Patricio\",\r\n    \"imagen\":\"josj.jpg\"\r\n    \r\n}",
@@ -371,7 +462,13 @@
 			"name": "peliculas/id",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"titulo\":\"Cars\",\r\n    \"imagen\":\"carros.jpg\",\r\n    \"fechaCreacion\": \"2008-02-20\",\r\n    \"calificacion\": 5\r\n    \r\n}",
@@ -400,10 +497,16 @@
 			"name": "peliculas/agregarPersonaje",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n   \r\n    \"imagen\": \"img.jpg\",\r\n     \"nombre\": \"Pato\",\r\n     \"edad\": 23,\r\n     \"peso\": 155,\r\n     \"historia\": \"blablabla\"\r\n}",
+					"raw": "",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -431,7 +534,13 @@
 			"name": "peliculas/removerPersonaje",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXRyaWNpb2Nhc3RlbGxhbm9AZ21haWwuY29tIiwiZXhwIjoxNjUzOTA5NzgwLCJpYXQiOjE2NTM4NzM3ODB9.7VoNjvjozMUCFPAJcXB3qmr5lmhnVf9KtKoBJzrMNvE",
+						"type": "default"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\":\"Patricio\",\r\n    \"imagen\":\"josj.jpg\"\r\n    \r\n}",
