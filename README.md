@@ -7,29 +7,16 @@ que lo componen y entender en qué películas participaron cada uno de esos pers
 
 Requerimientos técnicos 💻
 1. Modelado de Base de Datos
-● Personaje: deberá tener:
-○ Imagen
-○ Nombre
-○ Edad
-○ Peso
-○ Historia
-○ Películas o series asociadas
+Personaje: deberá tener: Imagen, Nombre, Edad, Peso, Historia, Películas o series asociadas,
 
 
-● Película o Serie:
-○ Este ítem deberá contener
-■ Imagen
-■ Título
-■ Fecha de creación
-■ Calificación (del 1 al 5)
-■ Personajes asociados
+Película o Serie:
+ Este ítem deberá contener
+  Imagen, Título, Fecha de creación, Calificación (del 1 al 5), Personajes asociados
 
 
-● Género:
-○ Este ítem deberá tener:
-■ Nombre
-■ Imagen
-■ Películas o series asociadas
+Género:
+ Este ítem deberá tener: Nombre, Imagen, Películas o series asociadas.
 
 2. Creación, Edición y Eliminación de Personajes (CRUD)
 ● Deberán existir las operaciones básicas de creación, edición y eliminación de
